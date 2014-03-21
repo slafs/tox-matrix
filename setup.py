@@ -35,6 +35,10 @@ setup(
     license="BSD",
     zip_safe=False,
     keywords='tox-matrix',
+    entry_points="""
+    [console_scripts]
+    tox-matrix = toxmatrix.cli:main
+    """,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

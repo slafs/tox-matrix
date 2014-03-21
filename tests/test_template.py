@@ -32,10 +32,11 @@ def test_default_template():
     tpl = Template(DEFAULT_TEMPLATE)
 
     expected = '''[tox]
-envlist = py27-A,py27-B,py33-A,py33-B,
+envlist = py27-A, py27-B, py33-A, py33-B
 
 [testenv]
 commands = py.test
+deps = pytest
 
 [testenv:py27-A]
 basepython = python2.7
@@ -63,5 +64,8 @@ deps = {[testenv]deps}
 '''
 
     ret = generate_tox_ini(matrix, tpl)
-
     assert ret == expected
+
+    # the same thing should be without passing the remplate
+    ret2 = generate_tox_ini(matrix)
+    assert ret2 == expected
