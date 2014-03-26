@@ -100,3 +100,9 @@ Features
 * Generate tox.ini files
 * Pin versions either with exact ones or by range
 * Use a Jinja2 template for your tox.ini file
+
+
+.. image:: https://d2weczhvl823v0.cloudfront.net/slafs/tox-matrix/trend.png
+   :alt: Bitdeli badge
+   :target: https://bitdeli.com/free
+
