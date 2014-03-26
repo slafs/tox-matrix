@@ -41,16 +41,26 @@ def generate_matrix(python_versions, packages, version_steps, pin_exact=False):
     versions
 
     :param python_versions: iterable of python version strings e.g. ('2.7', '3.3')
-    :param packages: iterable of package names e.g. ('Django', 'Fabric')
-    :param version_steps: iterable of iterables of version strings from above packages
-                          e.g. (('1.5', '1.6', '1.7'), ('1.6', '1.7', '1.8'))
-    :param pin_exact: defines whether to pin exactly above version.
-                      if *True* then use exact specified versions
-                      (e.g. to produce something like ('Django==1.5', 'Django==1.6', 'Django==1.7'))
-                      if *False* then use specified versions as boundaries
-                      (e.g. to produce something like ('Django>=1.5,<1.6', 'Django>=1.6,<1.7')
 
-    :return: an iterable of two tuples e.g.
+    :param packages: iterable of package names e.g. ('Django', 'Fabric')
+
+    :param version_steps:
+        iterable of iterables of version strings from above packages
+        e.g. (('1.5', '1.6', '1.7'), ('1.6', '1.7', '1.8'))
+
+    :param pin_exact:
+        defines whether to pin exactly above version.
+
+        if *True* then use exact specified versions
+        (e.g. to produce something like ('Django==1.5', 'Django==1.6', 'Django==1.7'))
+
+        if *False* then use specified versions as boundaries
+        (e.g. to produce something like ('Django>=1.5,<1.6', 'Django>=1.6,<1.7')
+
+    :return list:
+
+        an iterable of two tuples e.g.::
+
             [('python2.7', (
                 ('Django>=1.5,<1.6', 'Fabric>=1.6,<1.7'),
                 ('Django>=1.5,<1.6', 'Fabric>=1.7,<1.8'),
@@ -66,6 +76,7 @@ def generate_matrix(python_versions, packages, version_steps, pin_exact=False):
                 )
               ),
             ]
+
     '''
     ret = []
 
