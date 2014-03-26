@@ -35,7 +35,7 @@ class PyTest(TestCommand):
 
 setup(
     name='tox-matrix',
-    version='0.1.0',
+    version='0.1.1',
     description='Project for creating tox.ini files with multiple dependencies',
     long_description=readme + '\n\n' + history,
     author='Slawek Ehlert',
