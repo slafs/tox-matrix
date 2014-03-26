@@ -3,7 +3,7 @@
 tox-matrix
 
 Usage:
-    tox-matrix generate [(--pyver=PYVERSION)...] (--dep=PACKAGE --ver=VERSION_STRINGS)... [--template=TEMPLATE] [--exact]
+    tox-matrix generate (-d PACKAGE -v VERSION_STRINGS)... [-p PYVERSION]... [options]
     tox-matrix default
 
 Options:

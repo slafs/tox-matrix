@@ -15,7 +15,7 @@ def test_generate_matrix():
 
     python_versions = ['2.7', '3.3']
     packages = ['Django', 'Fabric']
-    version_steps = [ ['1.5', '1.6', '1.7'], ['1.5', '1.6', '1.7', '1.8']]
+    version_steps = [['1.5', '1.6', '1.7'], ['1.5', '1.6', '1.7', '1.8']]
     pin_exact = False
 
     ret = generate_matrix(python_versions, packages, version_steps, pin_exact)
@@ -50,7 +50,7 @@ def test_generate_matrix_exact():
 
     python_versions = ['2.7', '3.3']
     packages = ['Django', 'Fabric']
-    version_steps = [ ['1.5', '1.6', '1.7'], ['1.5', '1.6', '1.7', '1.8']]
+    version_steps = [['1.5', '1.6', '1.7'], ['1.5', '1.6', '1.7', '1.8']]
     pin_exact = True
 
     ret = generate_matrix(python_versions, packages, version_steps, pin_exact)

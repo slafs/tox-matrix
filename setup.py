@@ -4,18 +4,34 @@
 import os
 import sys
 
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
 
-if sys.argv[-1] == 'publish':
-    os.system('python setup.py sdist upload')
-    sys.exit()
+here = os.path.abspath(os.path.dirname(__file__))
 
-readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+
+def read(*parts):
+    # intentionally *not* adding an encoding option to open
+    return open(os.path.join(here, *parts), 'r').read()
+
+
+readme = read('README.rst')
+history = read('HISTORY.rst').replace('.. :changelog:', '')
+requirements = read('requirements.txt')
+
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = ['--strict', '--verbose', '--tb=long', 'tests']
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest
+        errno = pytest.main(self.test_args)
+        sys.exit(errno)
+
 
 setup(
     name='tox-matrix',
@@ -28,10 +44,8 @@ setup(
     packages=[
         'toxmatrix',
     ],
-    package_dir={'tox-matrix': 'tox-matrix'},
     include_package_data=True,
-    install_requires=[
-    ],
+    install_requires=requirements,
     license="BSD",
     zip_safe=False,
     keywords='tox-matrix',
@@ -51,4 +65,6 @@ setup(
         'Programming Language :: Python :: 3.3',
     ],
     test_suite='tests',
+    tests_require=['pytest'],
+    cmdclass={'test': PyTest},
 )
