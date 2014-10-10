@@ -14,6 +14,10 @@ Tox Matrix
 
 Project for creating tox.ini files with multiple dependencies.
 
+**WARNING!** As of version ``1.8.0`` of tox it is possible to create a multi-dimension
+config files. Described in [tox documentation](https://testrun.org/tox/latest/config.html#generating-environments-conditional-settings).
+That feature of tox practically makes this project obsolete.
+
 * Free software: BSD license
 * Documentation: http://tox-matrix.rtfd.org.
 
